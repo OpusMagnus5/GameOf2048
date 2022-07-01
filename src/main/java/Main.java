@@ -5,17 +5,34 @@ public class Main {
     static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
         Field field = new Field();
-        System.out.println();
+        String[] moves = in.nextLine().split(" ");
         field.showField();
 
-        field.moveUp();
+        for (int i = 0; i < moves.length; i++){
+            switch (moves[i]){
+                case "D" :
+                    field.moveDown();
+                    field.showField();
+                    break;
+                case "U" :
+                    field.moveUp();
+                    field.showField();
+                    break;
+                case "L" :
+                    field.moveLeft();
+                    field.showField();
+                    break;
+                case "R" :
+                    field.moveRight();
+                    field.showField();
+                    break;
+            }
+        }
 
-        System.out.println();
-        field.showField();
+        int[] numbers = field.countNumber();
+        for (int element : numbers){
+            System.out.print(element + " ");
+        }
     }
 
-    public static String getMoves(){
-        String moves = in.nextLine();
-        return Arrays.toString(moves.split(" "));
-    }
 }
